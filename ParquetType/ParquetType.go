@@ -122,6 +122,9 @@ func StrToParquetType(s string, pT *parquet.Type, cT *parquet.ConvertedType, len
 			return v
 
 		} else if *pT == parquet.Type_INT64 {
+			if s == "" {
+				return nil
+			}
 			var v int64
 			fmt.Sscanf(s, "%d", &v)
 			return v
@@ -136,6 +139,9 @@ func StrToParquetType(s string, pT *parquet.Type, cT *parquet.ConvertedType, len
 			return v
 
 		} else if *pT == parquet.Type_DOUBLE {
+			if s == "" {
+				return nil
+			}
 			var v float64
 			fmt.Sscanf(s, "%f", &v)
 			return v
